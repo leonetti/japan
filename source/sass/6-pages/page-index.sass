@@ -6,6 +6,27 @@
   display: flex
   align-items: center
 
+.error--wrapper
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: none
+
+  .close--error
+    position: absolute
+    font-size: 2rem
+    right: 1rem
+    top: 1rem
+    color: white
+    cursor: pointer
+
+
+  .error--text
+    padding: 2rem;
+    background: $red;
+    z-index: 100;
+    color: white;
+
 .login--wrapper,
 .info--wrapper
   display: flex
@@ -25,6 +46,9 @@
 
   @media screen and (max-width: 700px)
     width: 100%
+
+.login--form
+  width: 100%
 
 .login--button
   margin-top: 3rem

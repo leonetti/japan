@@ -40,22 +40,29 @@
 
     <div class="auth--wrapper">
 
+      <div class="error--wrapper">
+        <i class="fas fa-window-close close--error"></i>
+        <p class="error--text"></p>
+      </div>
+
       <section class="login--wrapper">
         <i class="fas fa-unlock-alt login--hero"></i>
 
-        <div class="input--wrapper">
-          <input type="text" class="input--field" name="email" required>
-          <label><i class="far fa-envelope"></i> Email</label>
-        </div>
+        <form class="login--form">
+          <div class="input--wrapper">
+            <input type="text" class="input--field" name="email" data-login-email required>
+            <label><i class="far fa-envelope"></i> Email</label>
+          </div>
 
-        <div class="input--wrapper">
-          <input type="password" class="input--field" name="password" required>
-          <label><i class="fas fa-lock"></i> Password</label>
-        </div>
+          <div class="input--wrapper">
+            <input type="password" class="input--field" name="password" data-login-password required>
+            <label><i class="fas fa-lock"></i> Password</label>
+          </div>
 
-        <div class="login--email">
-          <input type="button" data-email-login value="Login" class="login--button">
-        </div>
+          <div class="login--email">
+            <input type="submit" data-email-login value="Login" class="login--button">
+          </div>
+        </form>
 
         <div class="mobile--register">
           <a href="#ex1" rel="modal:open" class="mobile--register--button">Register</a>

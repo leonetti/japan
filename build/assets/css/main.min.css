@@ -408,6 +408,24 @@ hr {
   display: flex;
   align-items: center; }
 
+.error--wrapper {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: none; }
+  .error--wrapper .close--error {
+    position: absolute;
+    font-size: 2rem;
+    right: 1rem;
+    top: 1rem;
+    color: white;
+    cursor: pointer; }
+  .error--wrapper .error--text {
+    padding: 2rem;
+    background: #FF4136;
+    z-index: 100;
+    color: white; }
+
 .login--wrapper,
 .info--wrapper {
   display: flex;
@@ -427,6 +445,9 @@ hr {
   @media screen and (max-width: 700px) {
     .login--wrapper {
       width: 100%; } }
+
+.login--form {
+  width: 100%; }
 
 .login--button {
   margin-top: 3rem;

@@ -9,6 +9,9 @@
  */
 
 document.addEventListener('DOMContentLoaded', function(e) {
+
+  jQuery.noConflict();
+
   (function ( $, _ ) {
     'use strict';
 
