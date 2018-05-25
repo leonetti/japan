@@ -59,18 +59,18 @@
             <label><i class="fas fa-lock"></i> Password</label>
           </div>
 
-          <div class="login--email">
+          <div class="login--email--submit">
             <input type="submit" data-email-login value="Login" class="login--button">
           </div>
         </form>
 
         <div class="mobile--register">
-          <a href="#ex1" rel="modal:open" class="mobile--register--button">Register</a>
+          <a href="#register rel="modal:open" class="mobile--register--button">Register</a>
         </div>
 
         <p class="word--divider"><span>or</span></p>
 
-        <div class="login--google">
+        <div class="login--google--submit">
           <input type="button" data-google-login value="Login with google" class="login--button">
         </div>
       </section>
@@ -86,10 +86,30 @@
           to an adventure filled two weeks!
         </p>
 
-        <button class="register--button"><a href="#ex1" rel="modal:open">Register</a></button>
-        <div id="ex1" class="modal">
-          <input type="" name="">
-          <a href="#" rel="modal:close">Close</a>
+        <button class="register--button"><a href="#register" rel="modal:open">Register</a></button>
+
+        <div id="register" class="modal">
+          <h3>Register a new user</h3>
+          <form class="register--form">
+            <div class="input--wrapper">
+              <input type="text" class="input--field" name="email" data-register-email required>
+              <label><i class="far fa-envelope"></i> Email</label>
+            </div>
+
+            <div class="input--wrapper">
+              <input type="password" class="input--field" name="password" data-register-password required>
+              <label><i class="fas fa-lock"></i> Password</label>
+            </div>
+
+            <div class="input--wrapper">
+              <input type="password" class="input--field" name="password-confirm" data-register-password-confirm required>
+              <label><i class="fas fa-lock"></i> Confirm Password</label>
+            </div>
+
+            <div class="register--email--submit">
+              <input type="submit" data-register-submit value="Register" class="login--button">
+            </div>
+          </form>
         </div>
       </section>
 

@@ -11,6 +11,7 @@
   width: 100%;
   top: 0;
   display: none
+  z-index: 100;
 
   .close--error
     position: absolute
@@ -24,7 +25,6 @@
   .error--text
     padding: 2rem;
     background: $red;
-    z-index: 100;
     color: white;
 
 .login--wrapper,
@@ -56,10 +56,11 @@
   width: 100%
   max-width: 30rem
 
-.login--google,
-.login--email
+.login--google--submit,
+.login--email--submit
   width: 100%
   max-width: 30rem
+  margin: 0 auto
 
 .login--hero
   font-size: 7rem
@@ -161,6 +162,19 @@
       color: black
 
 
+#register
+  padding: 0
+  padding-bottom: 6rem
 
+  h3
+    text-align: center
+    margin: 0
+    padding: 20px 0
+    background: $blue
+
+.register--email--submit
+  max-width: 30rem
+  width: 100%
+  margin: 0 auto
 
 

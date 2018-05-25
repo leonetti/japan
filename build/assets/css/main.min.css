@@ -412,7 +412,8 @@ hr {
   position: fixed;
   width: 100%;
   top: 0;
-  display: none; }
+  display: none;
+  z-index: 100; }
   .error--wrapper .close--error {
     position: absolute;
     font-size: 2rem;
@@ -423,7 +424,6 @@ hr {
   .error--wrapper .error--text {
     padding: 2rem;
     background: #FF4136;
-    z-index: 100;
     color: white; }
 
 .login--wrapper,
@@ -455,10 +455,11 @@ hr {
   width: 100%;
   max-width: 30rem; }
 
-.login--google,
-.login--email {
+.login--google--submit,
+.login--email--submit {
   width: 100%;
-  max-width: 30rem; }
+  max-width: 30rem;
+  margin: 0 auto; }
 
 .login--hero {
   font-size: 7rem; }
@@ -553,3 +554,17 @@ hr {
     .register--button a:hover {
       background-color: #7FDBFF;
       color: black; }
+
+#register {
+  padding: 0;
+  padding-bottom: 6rem; }
+  #register h3 {
+    text-align: center;
+    margin: 0;
+    padding: 20px 0;
+    background: #0074D9; }
+
+.register--email--submit {
+  max-width: 30rem;
+  width: 100%;
+  margin: 0 auto; }
