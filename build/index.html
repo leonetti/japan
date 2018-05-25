@@ -7,6 +7,9 @@
 
     <link rel="stylesheet" href="assets/css/main.min.css" />
 
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/5.0.4/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
@@ -17,15 +20,79 @@
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
 
+
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAQ_5Gs_4AwxScPW-lVbjhUncAVa3Z8w_s",
+        authDomain: "my-2018-japan-trip.firebaseapp.com",
+        databaseURL: "https://my-2018-japan-trip.firebaseio.com",
+        projectId: "my-2018-japan-trip",
+        storageBucket: "my-2018-japan-trip.appspot.com",
+        messagingSenderId: "794514183543"
+      };
+      firebase.initializeApp(config);
+    </script>
+
   </head>
   <body>
 
-    <div id="login">
-      <button data-google-login>Login with google</button>
+    <div class="auth--wrapper">
+
+      <section class="login--wrapper">
+        <i class="fas fa-unlock-alt login--hero"></i>
+
+        <div class="input--wrapper">
+          <input type="text" class="input--field" name="email" required>
+          <label><i class="far fa-envelope"></i> Email</label>
+        </div>
+
+        <div class="input--wrapper">
+          <input type="password" class="input--field" name="password" required>
+          <label><i class="fas fa-lock"></i> Password</label>
+        </div>
+
+        <div class="login--email">
+          <input type="button" data-email-login value="Login" class="login--button">
+        </div>
+
+        <div class="mobile--register">
+          <a href="#ex1" rel="modal:open" class="mobile--register--button">Register</a>
+        </div>
+
+        <p class="word--divider"><span>or</span></p>
+
+        <div class="login--google">
+          <input type="button" data-google-login value="Login with google" class="login--button">
+        </div>
+      </section>
+
+      <section class="info--wrapper">
+        <h1>Japan 2018</h1>
+        <p class="info--blurb">Welcomes
+          <span class="name">Alexander Leonetti, </span>
+          <span class="name">Erika Clingerman, </span>
+          <span class="name">Mark Mac Manus, </span>
+          <span class="name">Dylan Bloom, </span> &amp;
+          <span class="name">Hannah Stombler-Levine</span>
+          to an adventure filled two weeks!
+        </p>
+
+        <button class="register--button"><a href="#ex1" rel="modal:open">Register</a></button>
+        <div id="ex1" class="modal">
+          <input type="" name="">
+          <a href="#" rel="modal:close">Close</a>
+        </div>
+      </section>
+
     </div>
 
     <script src="./assets/js/vendors.js"></script>
     <script src="./assets/js/app.js"></script>
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
     <script src="./assets/js/pages/index.js"></script>
   </body>

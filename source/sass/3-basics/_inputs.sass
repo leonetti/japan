@@ -1,0 +1,55 @@
+.input--wrapper  /* Edit Bootstrap Form Group */
+  font-family: 'Raleway', sans-serif
+  width: 100%
+  height: auto
+  margin: 40px auto 0
+  position: relative
+  max-width: 30rem
+
+.input--field
+  display: block
+  width: 100%
+  padding: .375rem .75rem
+  font-size: 2rem
+  line-height: 1.5
+  color: $navy
+  background-color: transparent
+  background-clip: padding-box
+  border: 1px solid #ced4da
+  border-radius: .25rem
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out
+
+
+.input--wrapper input
+  height: 3.5rem
+  width: 100%
+  border: none
+  border-radius: 0px
+  border-bottom: 1px solid $navy
+  z-index: 25
+
+  &:not([value=""]):valid
+    & + label
+      top: -25px
+      left: 0
+      color: $maroon
+
+
+  &:focus
+    border-bottom: 1px solid $maroon
+    outline: none
+
+    & + label
+      top: -25px
+      left: 0
+      color: $maroon
+
+
+.input--wrapper label
+  color: $navy
+  position: absolute
+  top: 0
+  left: 0
+  padding-top: 5px
+  transition: 0.2s
+  cursor: text

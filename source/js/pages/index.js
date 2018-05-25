@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
   (function ( $, _ ) {
     'use strict';
 
-
     /**
       * Check user state on Auth state change
       * If user exists redirect to activities home
@@ -33,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
       Login = function(options) {
         this.cfg = _.extend({
           selectors : {
-            'google_login' : '#login [data-google-login]',
+            'google_login' : '.login--google [data-google-login]',
           }
         })
         this.getDOMRefs();

@@ -1,0 +1,72 @@
+.auth--wrapper {
+  background: url("../img/authBackground.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center; }
+
+.login--wrapper,
+.register--wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem;
+  height: 100%; }
+
+.login--wrapper {
+  width: 40%;
+  background: rgba(255, 255, 255, 0.85); }
+  @media screen and (max-width: 1000px) {
+    .login--wrapper {
+      width: 50%; } }
+  @media screen and (max-width: 700px) {
+    .login--wrapper {
+      width: 100%; } }
+
+.register--wrapper {
+  width: 60%;
+  background: rgba(150, 200, 255, 0.85); }
+  @media screen and (max-width: 1000px) {
+    .register--wrapper {
+      width: 50%; } }
+  @media screen and (max-width: 700px) {
+    .register--wrapper {
+      display: none; } }
+
+.login--button {
+  margin-top: 3rem;
+  height: 6rem; }
+
+.login--hero {
+  font-size: 7rem; }
+
+.word--divider {
+  margin-top: 3rem;
+  margin-bottom: 0;
+  line-height: 0.5;
+  text-align: center; }
+
+.word--divider span {
+  display: inline-block;
+  position: relative;
+  width: 10rem; }
+
+.word--divider span:before,
+.word--divider span:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  border-bottom: 1px solid white;
+  border-top: 1px solid white;
+  top: 0;
+  max-width: 30rem;
+  width: 100%; }
+
+.word--divider span:before {
+  right: 55%;
+  margin-right: 15px; }
+
+.word--divider span:after {
+  margin-left: 15px; }

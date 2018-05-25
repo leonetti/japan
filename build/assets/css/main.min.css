@@ -182,7 +182,10 @@ th {
   padding: 0; }
 
 html {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  font-size: 62.5%; }
 
 *,
 *:before,
@@ -190,10 +193,15 @@ html {
   box-sizing: inherit; }
 
 body {
-  font-size: 14px;
-  line-height: 1.6;
+  width: 100%;
+  height: 100%;
+  min-width: 320px;
+  background-color: white;
+  font-size: 1.6rem;
+  line-height: 1.8;
   font-size: 14px;
   color: black;
+  font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%; }
 
@@ -326,6 +334,55 @@ hr {
   margin: 10px 0 30px;
   height: 0; }
 
+.input--wrapper {
+  font-family: 'Raleway', sans-serif;
+  width: 100%;
+  height: auto;
+  margin: 40px auto 0;
+  position: relative;
+  max-width: 30rem; }
+
+.input--field {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 2rem;
+  line-height: 1.5;
+  color: #001F3F;
+  background-color: transparent;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; }
+
+.input--wrapper input {
+  height: 3.5rem;
+  width: 100%;
+  border: none;
+  border-radius: 0px;
+  border-bottom: 1px solid #001F3F;
+  z-index: 25; }
+  .input--wrapper input:not([value=""]):valid + label {
+    top: -25px;
+    left: 0;
+    color: #85144B; }
+  .input--wrapper input:focus {
+    border-bottom: 1px solid #85144B;
+    outline: none; }
+    .input--wrapper input:focus + label {
+      top: -25px;
+      left: 0;
+      color: #85144B; }
+
+.input--wrapper label {
+  color: #001F3F;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 5px;
+  transition: 0.2s;
+  cursor: text; }
+
 .flex-video {
   height: 0;
   margin-bottom: 0.88889rem;
@@ -342,3 +399,136 @@ hr {
   top: 0;
   width: 100%;
   left: 0; }
+
+.auth--wrapper {
+  background: url("../img/authBackground.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center; }
+
+.login--wrapper,
+.info--wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem;
+  height: 100%;
+  overflow: scroll; }
+
+.login--wrapper {
+  width: 40%;
+  background: rgba(255, 255, 255, 0.85); }
+  @media screen and (max-width: 1000px) {
+    .login--wrapper {
+      width: 50%; } }
+  @media screen and (max-width: 700px) {
+    .login--wrapper {
+      width: 100%; } }
+
+.login--button {
+  margin-top: 3rem;
+  height: 6rem;
+  width: 100%;
+  max-width: 30rem; }
+
+.login--google,
+.login--email {
+  width: 100%;
+  max-width: 30rem; }
+
+.login--hero {
+  font-size: 7rem; }
+
+.word--divider {
+  margin-top: 3rem;
+  margin-bottom: 0;
+  line-height: 0.5;
+  text-align: center;
+  opacity: 0.7; }
+
+.word--divider span {
+  display: inline-block;
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid #001F3F;
+  line-height: 2.8rem; }
+
+.word--divider span:before,
+.word--divider span:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  border-bottom: 2px solid #001F3F;
+  top: 0;
+  max-width: 30rem;
+  width: 13rem; }
+
+.word--divider span:before {
+  right: calc(50% + 1.5rem);
+  top: 1rem; }
+
+.word--divider span:after {
+  left: calc(50% + 1.5rem);
+  top: 1rem; }
+
+.info--wrapper {
+  width: 60%;
+  background: rgba(50, 100, 255, 0.85);
+  text-align: center;
+  color: white; }
+  .info--wrapper h1 {
+    color: white;
+    letter-spacing: 1px; }
+  @media screen and (max-width: 1000px) {
+    .info--wrapper {
+      width: 50%; } }
+  @media screen and (max-width: 700px) {
+    .info--wrapper {
+      display: none; } }
+
+.info--wrapper .name {
+  color: #7FDBFF; }
+
+.info--blurb {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 6rem; }
+
+.mobile--register {
+  position: relative;
+  max-width: 30rem;
+  width: 100%;
+  margin-top: 11px; }
+
+.mobile--register--button {
+  display: none;
+  position: absolute;
+  left: 0;
+  letter-spacing: 0.5px;
+  font-weight: 500; }
+  @media screen and (max-width: 700px) {
+    .mobile--register--button {
+      display: block; } }
+
+.register--button {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  margin-bottom: 3rem; }
+  .register--button a {
+    color: white;
+    padding: 1rem 3rem;
+    display: block;
+    border: 2px solid white;
+    border-radius: 6px;
+    transition: all .3s ease-in-out;
+    font-weight: 900;
+    letter-spacing: 0.5px; }
+    .register--button a:hover {
+      background-color: #7FDBFF;
+      color: black; }

@@ -1,6 +1,9 @@
 html
   // border-box box model allows us to add padding and border to our elements without increasing their size
   box-sizing: border-box
+  width: 100%
+  height: 100%
+  font-size: 62.5%
 
   // WAT IS THIS?!
   // We inherit box-sizing: border-box; from our <html> selector
@@ -11,10 +14,15 @@ html
 
 
 body
-  font-size: 14px
-  line-height: 1.6
+  width: 100%
+  height: 100%
+  min-width: 320px
+  background-color: white
+  font-size: 1.6rem;
+  line-height: 1.8
   font-size: 14px
   color: black
+  font-weight: 300;
   -webkit-font-smoothing: antialiased
   -webkit-text-size-adjust: 100%
 
@@ -27,3 +35,4 @@ body
 
 section
   display: -webkit-box
+
