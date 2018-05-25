@@ -1,1 +1,1 @@
-jQuery.noConflict(),jQuery(document).ready(function(){firebase.auth().currentUser,console.log("firebase: ",firebase.app())});
+jQuery.noConflict(),function(t){t(document).ready(function(e){var a=JSON.parse(localStorage.getItem("user"));console.log("user: ",a),a&&(t("[data-name]").text(a.name),t("[data-email]").text(a.email))})}(jQuery);

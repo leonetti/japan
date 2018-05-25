@@ -21,14 +21,17 @@ jQuery.noConflict();
 initApp = function() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (!user) {
+      window.localStorage.removeItem('user');
       if(window.location.pathname !== '/') {
         window.location = '/'
       }
     } else {
-      window.Japan.user = {
+      var user = {
         name : user.displayName,
         email : user.email,
       }
+
+      window.localStorage.setItem('user', JSON.stringify(user));
     }
   }, function(error) {
     console.log(error);

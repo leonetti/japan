@@ -3,12 +3,17 @@
 
 jQuery.noConflict();
 (function($) {
-  $(document).ready(function() {
-    var user = firebase.auth().currentUser;
-    console.log('firebase: ', firebase.app());
+
+
+  $(document).ready(function(e) {
+    var user = JSON.parse(localStorage.getItem('user'));
+    console.log('user: ', user);
+    if(user) {
+      $('[data-name]').text(user.name);
+      $('[data-email]').text(user.email);
+    }
   })
 })(jQuery);
-
 
 // var user = firebase.auth().currentUser;
 // user.updateProfile({
