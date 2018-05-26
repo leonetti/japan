@@ -185,6 +185,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
       Navigation.prototype.hideUserModal = function() {
         this.$dom.settings_modal.modal();
         $('.jquery-modal.blocker').hide();
+        $('body').removeAttr('style');
       }
 
 

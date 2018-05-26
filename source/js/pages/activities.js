@@ -18,6 +18,7 @@ jQuery.noConflict();
             'content_wrapper'        : '.activities--content--wrapper',
             'content_item'           : '.activities--content--wrapper .content--show',
             'content_close'          : '.activities--content--wrapper .close--content',
+            'add_item'               : '[data-add-item]',
           },
         })
 
@@ -73,6 +74,7 @@ jQuery.noConflict();
       Activities.prototype.bindHandlers = function() {
         this.$dom.grid_item.on('click', this.handlerGridClick.bind(this));
         this.$dom.content_close.on('click', this.handlerCloseContent.bind(this));
+        this.$dom.add_item.on('click', this.handlerAddUserActivity.bind(this));
       };
 
 
@@ -105,6 +107,19 @@ jQuery.noConflict();
       Activities.prototype.handlerCloseContent = function(e) {
         this.$dom.content_item.fadeOut('slow');
         this.$dom.activities_wrapper.fadeIn('slow');
+      };
+
+
+
+      /**
+        * Binds event listeners
+        *
+        * @returns {Null}
+      */
+      Activities.prototype.handlerAddUserActivity = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.Japan.Error.handlerShowError('Coming Soon: Add Activities to Your Own List!', true);
       };
 
 

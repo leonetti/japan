@@ -33,6 +33,9 @@ body
     border: 1px solid $lightgray
     content: ''
 
+  &:hover .add--item
+    display: block
+
   &:hover:before
     border: 3px solid $aqua
 
@@ -40,6 +43,19 @@ body
   .category
     color: $medgray
     font-family: "Playfair Display", serif
+
+.add--item
+  position: absolute;
+  top: 0;
+  font-size: 5rem;
+  right: 2.4rem;
+  display: none
+  color: $aqua
+
+  &:hover,
+  &:focus,
+  &:active
+    color: $maroon
 
 .loader
   height: 1px
