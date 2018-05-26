@@ -1,5 +1,6 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize * */
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,900");
+@import url(http://fonts.googleapis.com/css?family=Playfair+Display+SC:400italic,700,900|Raleway:500|Martel+Sans:400,700);
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -391,7 +392,9 @@ input[type="submit"].input--hidden,
 .navigation--wrapper {
   width: 100%;
   position: fixed;
-  background: #3264ff; }
+  background: #3264ff;
+  top: 0;
+  z-index: 100; }
   .navigation--wrapper ul {
     padding: 0;
     margin: 0;
@@ -436,7 +439,7 @@ input[type="submit"].input--hidden,
   border: none;
   font-size: 3rem;
   display: none;
-  z-index: 1;
+  z-index: 101;
   background: transparent; }
 
 input[type="submit"].update--submit {
@@ -655,3 +658,136 @@ input[type="submit"].update--submit {
   max-width: 30rem;
   width: 100%;
   margin: 0 auto; }
+
+body {
+  background: #f5f5f5; }
+
+.grid {
+  margin-top: 7rem;
+  padding: 5rem;
+  display: flex;
+  flex-wrap: wrap; }
+
+.grid--item {
+  height: 30rem;
+  width: 35rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  text-align: center;
+  position: relative;
+  background: #fff;
+  transition: all;
+  flex: 1 0 auto;
+  cursor: pointer; }
+  .grid--item:before {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    left: 5px;
+    bottom: 5px;
+    border: 1px solid #f5f5f5;
+    content: ''; }
+  .grid--item:hover:before {
+    border: 3px solid #7FDBFF; }
+  .grid--item h2,
+  .grid--item .category {
+    color: #7b7b7b;
+    font-family: "Playfair Display", serif; }
+
+.loader {
+  height: 1px;
+  width: 40%;
+  margin: 1em auto;
+  position: relative;
+  background: rgba(0, 0, 0, 0.1); }
+  .loader.active:after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 3px;
+    width: 0px;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+    background: #7FDBFF;
+    animation-name: underline;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards; }
+  .loader.active {
+    display: inline-block;
+    position: relative; }
+
+@keyframes underline {
+  0% {
+    width: 0; }
+  100% {
+    width: 100%; } }
+
+.content--show {
+  display: none;
+  position: absolute;
+  top: 0;
+  z-index: 300;
+  background: #f5f5f5;
+  width: 100%;
+  left: 0;
+  height: 100vh;
+  overflow: scroll; }
+
+.meta--full {
+  position: fixed;
+  height: 100vh;
+  width: 200px;
+  background: white; }
+
+.content--description--wrapper {
+  position: absolute;
+  left: 200px;
+  width: calc(100% - 200px); }
+  .content--description--wrapper img {
+    margin: 0 auto;
+    display: block;
+    max-height: 300px; }
+
+.close--content {
+  font-size: 3rem;
+  opacity: 0.7;
+  padding: 0 2rem 0 0;
+  border: none;
+  background: transparent;
+  position: absolute;
+  right: 0; }
+
+.content--sub--title,
+.content--main--title {
+  font-family: "Playfair Display", serif;
+  text-align: center; }
+
+.content--sub--title {
+  font-size: 2rem;
+  color: #3D9970; }
+
+.content--main--title {
+  font-size: 4rem; }
+
+.content--description {
+  margin-top: 5rem;
+  font-size: 2rem;
+  text-align: center;
+  display: block;
+  width: 80%;
+  margin: 0 auto 2rem; }
+
+.meta--full button,
+.meta--full span {
+  width: 15rem;
+  display: block;
+  margin: 0 auto; }
+
+.meta--full button {
+  margin: 10rem auto 2rem; }
+
+.meta--user--hearts i {
+  color: #FF4136; }

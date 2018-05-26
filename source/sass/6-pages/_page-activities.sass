@@ -1,0 +1,145 @@
+@import url(http://fonts.googleapis.com/css?family=Playfair+Display+SC:400italic,700,900|Raleway:500|Martel+Sans:400,700)
+
+body
+  background: $lightgray
+
+
+.grid
+  margin-top: 7rem
+  padding: 5rem
+  display: flex
+  flex-wrap: wrap
+
+.grid--item
+  height: 30rem
+  width: 35rem
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-flow: column
+  text-align: center
+  position: relative
+  background: $white
+  transition: all
+  flex: 1 0 auto
+  cursor: pointer
+
+  &:before
+    position: absolute
+    top: 5px
+    right: 5px
+    left: 5px
+    bottom: 5px
+    border: 1px solid $lightgray
+    content: ''
+
+  &:hover:before
+    border: 3px solid $aqua
+
+  h2,
+  .category
+    color: $medgray
+    font-family: "Playfair Display", serif
+
+.loader
+  height: 1px
+  width: 40%
+  margin: 1em auto
+  position: relative
+  background: rgba(0, 0, 0, 0.1)
+
+
+  &.active:after
+    content: ''
+    display: block
+    margin: auto
+    height: 3px
+    width: 0px
+    background: transparent
+    transition: width .5s ease, background-color .5s ease
+    background: $aqua
+    animation-name: underline
+    animation-duration: 1s
+    animation-timing-function: ease
+    animation-fill-mode: forwards
+
+
+  &.active
+    display: inline-block
+    position: relative
+
+
+@keyframes underline
+  0%
+    width: 0
+  100%
+    width: 100%
+
+.content--show
+  display: none
+  position: absolute
+  top: 0
+  z-index: 300
+  background: $lightgray
+  width: 100%
+  left: 0
+  height: 100vh
+  overflow: scroll
+
+.meta--full
+  position: fixed
+  height: 100vh
+  width: 200px
+  background: white
+
+.content--description--wrapper
+  position: absolute
+  left: 200px
+  width: calc(100% - 200px)
+
+  img
+    margin: 0 auto
+    display: block
+    max-height: 300px
+
+.close--content
+  font-size: 3rem
+  opacity: 0.7
+  padding: 0 2rem 0 0
+  border: none
+  background: transparent
+  position: absolute
+  right: 0
+
+.content--sub--title,
+.content--main--title
+  font-family: "Playfair Display", serif
+  text-align: center
+
+.content--sub--title
+  font-size: 2rem
+  color: $olive
+
+.content--main--title
+  font-size: 4rem
+
+.content--description
+  margin-top: 5rem
+  font-size: 2rem
+  text-align: center
+  display: block
+  width: 80%
+  margin: 0 auto 2rem
+
+.meta--full
+  button,
+  span
+    width: 15rem
+    display: block
+    margin: 0 auto
+
+  button
+    margin: 10rem auto 2rem
+
+.meta--user--hearts i
+  color: $red
