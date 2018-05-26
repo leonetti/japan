@@ -459,7 +459,7 @@ input[type="submit"].update--submit {
   @media screen and (max-width: 500px) {
     .update--label {
       font-size: 2rem;
-      margin-top: -4.2rem; } }
+      line-height: 6rem; } }
 
 .error--wrapper {
   position: fixed;

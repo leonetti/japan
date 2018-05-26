@@ -111,13 +111,13 @@ document.addEventListener('DOMContentLoaded', function(e) {
         var type = $(e.target).data('update-button');
         this.$dom.user_form_button.hide();
         var $label = $(e.target).next('.update--label');
-        $label.show();
-        $label.next('.input--wrapper').show();
+        $label.fadeIn('slow');
+        $label.next('.input--wrapper').fadeIn('slow');
         if(type === 'password') {
-          this.$dom.user_password_confirm.show();
+          this.$dom.user_password_confirm.fadeIn('slow');
         }
         this.$dom.user_submit.css('display', 'block');
-        this.$dom.form_back.show();
+        this.$dom.form_back.fadeIn('slow');
         this.$dom.logout_confirm.hide();
       }
 
