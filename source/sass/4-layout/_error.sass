@@ -1,0 +1,23 @@
+.error--wrapper
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: none
+  z-index: 100;
+
+  .close--error
+    position: absolute
+    font-size: 2rem
+    right: 1rem
+    top: 1rem
+    color: white
+    cursor: pointer
+
+
+  .error--text
+    padding: 2rem;
+    background: $red;
+    color: white;
+
+    &.success--text
+      background: $olive

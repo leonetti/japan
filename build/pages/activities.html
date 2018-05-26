@@ -38,17 +38,64 @@
   </head>
   <body>
 
-    <div id="logout">
-      <button data-logout>Logout</button>
-      <h1>Coming Soon!</h1>
-      <h3 data-name></h3>
-      <h3 data-email></h3>
+    <div class="error--wrapper">
+      <i class="fas fa-window-close close--error"></i>
+      <p class="error--text"></p>
     </div>
+
+    <nav class="navigation--wrapper">
+      <ul>
+        <li><p href="#" data-user-name></p></li><!--
+         --><li><a href="#">Home</a></li><!--
+         --><li><a href="#">My Activities</a></li><!--
+         --><li><a href="#" data-user-email data-logout></a></li>
+      </ul>
+    </nav>
+
+    <div id="settings--modal" class="modal">
+      <div class="user--form">
+        <button class="form--back"><i class="fas fa-arrow-alt-circle-left"></i></button>
+
+        <button class="form--show--button" data-update-button="name"><i class="fas fa-user"></i> Update Name</button>
+        <label class="update--label">Update Name</label>
+        <div class="input--wrapper input--hidden">
+          <input type="text" class="input--field" name="name" data-update-text="name" required>
+          <label><i class="fas fa-user"></i> Name</label>
+        </div>
+
+        <button class="form--show--button" data-update-button="email"><i class="far fa-envelope"></i> Update Email</button>
+        <label class="update--label">Update Email</label>
+        <div class="input--wrapper input--hidden">
+          <input type="text" class="input--field" name="email" data-update-text="email" required>
+          <label><i class="far fa-envelope"></i> Email</label>
+        </div>
+
+        <button class="form--show--button" data-update-button="password"><i class="fas fa-lock"></i> Update Password</button>
+        <label class="update--label">Update Password</label>
+        <div class="input--wrapper input--hidden">
+          <input type="password" class="input--field" name="password" data-update-text="password" required>
+          <label><i class="fas fa-lock"></i> Password</label>
+        </div>
+        <div class="input--wrapper input--hidden" data-password-confirm-wrapper>
+          <input type="password" class="input--field" name="password-confirm" data-update-text="password"-confirm required>
+          <label><i class="fas fa-lock"></i> Confirm Password</label>
+        </div>
+      </div>
+      <input type="submit" value="Submit" class="input--hidden update--submit" data-update-submit>
+      <button data-logout-confirm class="user--logout">Logout</button>
+    </div>
+
+
 
     <script src="../assets/js/vendors.js"></script>
     <script src="../assets/js/app.js"></script>
 
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
     <script src="../assets/js/pages/activities.js"></script>
-    <script src="../assets/js/common/logout.js"></script>
+    <script src="../assets/js/common/navigation.js"></script>
+    <script src="../assets/js/common/error.js"></script>
   </body>
 </html>

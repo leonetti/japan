@@ -1,0 +1,91 @@
+.navigation--wrapper
+  width: 100%
+  position: fixed
+  background: $blue
+
+  ul
+    padding: 0
+    margin: 0
+    min-height: 4rem
+    display: flex
+    flex-wrap: wrap
+
+  li
+    list-style: none
+    // display: inline-block
+
+    &:last-child
+      margin-left: auto
+
+  p
+    font-weight: 900
+
+  a,
+  p
+    padding: 1.2rem
+    line-height: 4rem
+    color: white
+    display: block
+    height: 100%
+    margin: 0
+
+  a:hover
+    background: $navy
+
+#settings--modal
+  padding: 0
+  min-height: 318px
+
+.user--form
+  display: flex
+  flex-flow: column
+
+.form--show--button
+  padding: 1rem
+  margin: 2rem auto 0
+  width: 90%
+
+  &:first-child
+    margin-top: 3rem
+
+.form--back
+  padding: 0
+  width: 5rem
+  border: none
+  font-size: 3rem
+  display: none
+  z-index: 1
+  background: transparent
+
+input[type="submit"].update--submit
+  margin: 3rem auto
+
+.user--logout
+  width: 90%
+  padding: 1rem
+  margin: 5rem auto 2rem
+  display: block
+
+.update--label
+  display: none
+  text-align: center
+  font-size: 3rem
+  font-weight: 900
+  margin-top: -5.4rem
+  background: $blue
+  border-top-left-radius: 8px
+  border-top-right-radius: 8px
+
+  @media screen and (max-width: 500px)
+    font-size: 2rem
+    margin-top: -4.2rem
+
+
+
+
+
+
+
+
+
+
