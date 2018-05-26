@@ -344,6 +344,7 @@ hr {
 
 input[type="submit"].input--hidden,
 .input--hidden {
+  display: none;
   display: none; }
 
 .input--field {

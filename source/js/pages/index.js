@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         } else if(pConfirm !== password) {
           window.Japan.Error.handlerShowError({message:'Passwords do not match. Please re-enter your password now.'});
         } else if(password.length < 6 || pConfirm.length < 6) {
-          window.Japan.Error.handlerShowError(message:'Password must be at least 6 characters.'});
+          window.Japan.Error.handlerShowError({message:'Password must be at least 6 characters.'});
         } else {
           firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
             .then(function() {
