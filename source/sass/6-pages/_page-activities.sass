@@ -100,7 +100,9 @@ body
   img
     margin: 0 auto
     display: block
-    max-height: 300px
+    max-height: 250px
+    margin-bottom: 4rem
+
 
 .close--content
   font-size: 3rem
@@ -111,6 +113,11 @@ body
   position: absolute
   right: 0
 
+  &:hover
+    transform: none
+    color: $navy
+
+
 .content--sub--title,
 .content--main--title
   font-family: "Playfair Display", serif
@@ -119,9 +126,11 @@ body
 .content--sub--title
   font-size: 2rem
   color: $olive
+  margin-bottom: 0
 
 .content--main--title
   font-size: 4rem
+  margin-top: 1rem
 
 .content--description
   margin-top: 5rem
@@ -140,6 +149,17 @@ body
 
   button
     margin: 10rem auto 2rem
+
+  .meta--seperator
+    padding: 20px 0 0;
+    border-top: 1px solid $lightgray
+    width: 15rem;
+    display: block;
+    margin: 25px auto 0;
+
+  .meta--price
+    font-weight: 900;
+    font-size: 3rem;
 
 .meta--user--hearts i
   color: $red

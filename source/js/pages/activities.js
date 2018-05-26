@@ -86,7 +86,6 @@ jQuery.noConflict();
         var $el = $(e.target).closest('.grid--item');
         var $loader = $el.find('.loader').addClass('active');
         var ref = $el.data('ref');
-        console.log(ref);
         setTimeout(function() {
           this.$dom.activities_wrapper.fadeOut('slow');
         }.bind(this), 500);

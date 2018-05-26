@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         *
         * @returns {Null}
       */
-      Navigation.prototype.handlerUpdatePassword = function($wrappers) {
+      Navigation.prototype.handlerUpdatePassword = function($wrappers, user) {
         var passwordInputs = $wrappers.find('.input--field');
         var password = passwordInputs[0].value;
         var pConfirm = passwordInputs[1].value;
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         // if showing two fields it's password update
         if($wrappers.length > 1) {
-          this.handlerUpdatePassword($wrapper);
+          this.handlerUpdatePassword($wrappers, user);
         } else {
           var $el = $wrappers.find('.input--field');
           val = $el.val().trim();

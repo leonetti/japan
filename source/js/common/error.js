@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
       */
       Error.prototype.handlerShowError = function(message, success) {
         this.$dom.error_text.removeClass('success--text');
-        console.log('success: ', success);
         this.$dom.error_text.text(message);
         this.$dom.error_wrapper.show('slow');
         if(success) {

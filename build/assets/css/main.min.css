@@ -470,7 +470,7 @@ input[type="submit"].update--submit {
   width: 100%;
   top: 0;
   display: none;
-  z-index: 100; }
+  z-index: 10000; }
   .error--wrapper .close--error {
     position: absolute;
     font-size: 2rem;
@@ -749,7 +749,8 @@ body {
   .content--description--wrapper img {
     margin: 0 auto;
     display: block;
-    max-height: 300px; }
+    max-height: 250px;
+    margin-bottom: 4rem; }
 
 .close--content {
   font-size: 3rem;
@@ -759,6 +760,9 @@ body {
   background: transparent;
   position: absolute;
   right: 0; }
+  .close--content:hover {
+    transform: none;
+    color: #001F3F; }
 
 .content--sub--title,
 .content--main--title {
@@ -767,10 +771,12 @@ body {
 
 .content--sub--title {
   font-size: 2rem;
-  color: #3D9970; }
+  color: #3D9970;
+  margin-bottom: 0; }
 
 .content--main--title {
-  font-size: 4rem; }
+  font-size: 4rem;
+  margin-top: 1rem; }
 
 .content--description {
   margin-top: 5rem;
@@ -788,6 +794,17 @@ body {
 
 .meta--full button {
   margin: 10rem auto 2rem; }
+
+.meta--full .meta--seperator {
+  padding: 20px 0 0;
+  border-top: 1px solid #f5f5f5;
+  width: 15rem;
+  display: block;
+  margin: 25px auto 0; }
+
+.meta--full .meta--price {
+  font-weight: 900;
+  font-size: 3rem; }
 
 .meta--user--hearts i {
   color: #FF4136; }
