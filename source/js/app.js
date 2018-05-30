@@ -12,6 +12,10 @@ jQuery.noConflict();
     $(e.target).closest('.input--wrapper').find('.input--field').focus();
   });
 
+  $('.textarea--wrapper label, .textarea--wrapper label i').on('click', function(e) {
+    $(e.target).closest('.textarea--wrapper').find('.input--field').focus();
+  });
+
   $(document).ready(function(e) {
     initApp();
   })
@@ -19,6 +23,8 @@ jQuery.noConflict();
 
 
 initApp = function() {
+  var app = firebase.app();
+
   firebase.auth().onAuthStateChanged(function(user) {
     if (!user) {
       window.localStorage.removeItem('user');

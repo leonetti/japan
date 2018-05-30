@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', function(e) {
     // Japan.Navigation namespace
     (function(Navigation) {
 
+      var db = firebase.firestore();
+      var activitiesRef = db.collection('activities');
+      var storageRef = firebase.storage();
+
       Navigation = function(options) {
         this.cfg = _.extend({
           selectors : {
@@ -31,6 +35,14 @@ document.addEventListener('DOMContentLoaded', function(e) {
             'user_inputs'                : '#settings--modal .input--wrapper',
             'user_labels'                : '#settings--modal .update--label',
             'user_password_confirm'      : '#settings--modal [data-password-confirm-wrapper]',
+            'show_activity_modal'        : '.navigation--wrapper [data-activity-modal]',
+            'activity_modal'             : '#activity--modal',
+            'activity_submit'            : '#activity--modal [data-activity-submit]',
+            'activity_title'             : '#activity--modal [data-activity="title"]',
+            'activity_subtitle'          : '#activity--modal [data-activity="subtitle"]',
+            'activity_description'       : '#activity--modal [data-activity="description"]',
+            'activity_price'             : '#activity--modal [data-activity="price"]',
+            'activity_file'              : '#activity--modal [data-activity="file"]',
           }
         })
         this.getDOMRefs();
@@ -67,7 +79,76 @@ document.addEventListener('DOMContentLoaded', function(e) {
         this.$dom.user_form_button.on('click', this.handlerShowSubForm.bind(this));
         this.$dom.form_back.on('click', this.handlerFormGoBack.bind(this));
         this.$dom.user_submit.on('click', this.handlerUpdateUser.bind(this));
+        this.$dom.show_activity_modal.on('click', this.handlerShowActivityModal.bind(this));
+        this.$dom.activity_submit.on('click', this.handlerAddActivity.bind(this));
       };
+
+
+      /**
+        * Adds Activity to DB
+        *
+        * @returns {Null}
+      */
+      Navigation.prototype.handlerAddActivity = function(e) {
+        e.preventDefault();
+        var title = this.$dom.activity_title.val().trim();
+        var subtitle = this.$dom.activity_subtitle.val().trim();
+        var description = this.$dom.activity_description.val().trim();
+        var price = parseFloat(this.$dom.activity_price.val());
+        var file = document.querySelector('input[type=file]').files[0];
+        var data = {
+          title: title,
+          sub_title: subtitle,
+          description: description,
+          price: price,
+          users: [],
+        }
+        console.log('file: ', file);
+        if(!title) {
+          window.Japan.Error.handlerShowError('Please enter a valid title.');
+        } else if(!subtitle) {
+          window.Japan.Error.handlerShowError('Please enter a valid subtitle. i.e: Shopping Center.');
+        } else if(!description) {
+          window.Japan.Error.handlerShowError('Please enter a description.');
+        } else if(isNaN(price)) {
+          window.Japan.Error.handlerShowError('Please enter a valid price, if free enter 0.');
+        } else if(!file) {
+          window.Japan.Error.handlerShowError('Please upload a picture.');
+        } else {
+          activitiesRef.doc().set(data)
+            .then(function() {
+              storageRef.ref('/' + title + '/').put(file)
+                .then(function(snapshot) {
+                  if(!_.isEmpty(window.Japan.Activities)) {
+                    window.Japan.Activities.emptyActivities();
+                    window.Japan.Activities.getActivities();
+                    window.Japan.Error.handlerShowError('Activity Added!', true);
+                  }
+                }.bind(this))
+                .catch(function(error) {
+                  window.Japan.Error.handlerShowError('Can\'t update activities. Refresh page.');
+                }.bind(this));
+            }.bind(this))
+            .catch(function(error) {
+              window.Japan.Error.handlerShowError('Can\'t update activities. Refresh page.');
+            }.bind(this));
+          this.hideUserModal();
+        }
+      }
+
+
+      /**
+        * Shows Activity Modal
+        *
+        * @returns {Null}
+      */
+      Navigation.prototype.handlerShowActivityModal = function(e) {
+        e.preventDefault();
+        this.$dom.activity_modal.modal({
+          fadeDuration: 500,
+          fadeDelay: 0.50
+        });
+      }
 
 
       /**
@@ -267,7 +348,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
       }
 
       // Initializes Navigation
-      new Navigation();
+      window.Japan.Navigation = new Navigation();
+
     })(window.Japan.Navigation = window.Japan.Navigation || {});
   })(window.jQuery, window._);
 })

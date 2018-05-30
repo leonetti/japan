@@ -1,6 +1,6 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize * */
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,900");
-@import url(http://fonts.googleapis.com/css?family=Playfair+Display+SC:400italic,700,900|Raleway:500|Martel+Sans:400,700);
+@import url(//fonts.googleapis.com/css?family=Playfair+Display+SC:400italic,700,900|Raleway:500|Martel+Sans:400,700);
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -214,6 +214,9 @@ body {
 section {
   display: -webkit-box; }
 
+.blocker {
+  z-index: 100 !important; }
+
 .button,
 button,
 input[type="submit"],
@@ -249,6 +252,10 @@ input[type="button"] {
     outline: 0;
     transform: scale(1.01);
     transform: translateY(3px); }
+
+input[type="submit"].update--submit {
+  margin: 3rem auto;
+  display: block; }
 
 a {
   color: #3264ff;
@@ -335,13 +342,21 @@ hr {
   margin: 10px 0 30px;
   height: 0; }
 
-.input--wrapper {
+.input--wrapper,
+.textarea--wrapper,
+.file--wrapper {
   font-family: 'Raleway', sans-serif;
   width: 100%;
   height: auto;
   margin: 4rem auto 0;
-  position: relative;
+  position: relative; }
+
+.input--wrapper,
+.file--wrapper {
   max-width: 30rem; }
+
+.textarea--wrapper {
+  max-width: 32rem; }
 
 input[type="submit"].input--hidden,
 .input--hidden {
@@ -361,26 +376,52 @@ input[type="submit"].input--hidden,
   border-radius: .25rem;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; }
 
-.input--wrapper input {
+.input--wrapper input,
+.textarea--wrapper textarea,
+.file--wrapper input {
   height: 3.5rem;
   width: 100%;
   border: none;
   border-radius: 0px;
   border-bottom: 1px solid #001F3F;
   z-index: 25; }
-  .input--wrapper input:not([value=""]):valid + label {
+  .input--wrapper input:not([value=""]):valid + label,
+  .textarea--wrapper textarea:not([value=""]):valid + label,
+  .file--wrapper input:not([value=""]):valid + label {
     top: -25px;
     left: 0;
     color: #85144B; }
-  .input--wrapper input:focus {
+  .input--wrapper input:focus,
+  .textarea--wrapper textarea:focus,
+  .file--wrapper input:focus {
     border-bottom: 1px solid #85144B;
     outline: none; }
-    .input--wrapper input:focus + label {
+    .input--wrapper input:focus + label,
+    .textarea--wrapper textarea:focus + label,
+    .file--wrapper input:focus + label {
       top: -25px;
       left: 0;
       color: #85144B; }
 
-.input--wrapper label {
+.file--wrapper input {
+  border: none;
+  line-height: 0; }
+  .file--wrapper input:focus {
+    border: none; }
+
+.textarea--wrapper textarea {
+  margin: 0px -1px 0px 0px;
+  height: 92px;
+  border: 1px solid #001F3F;
+  border-top: none;
+  width: 100%;
+  padding: 3.75px 1.7rem; }
+  .textarea--wrapper textarea:focus {
+    border: 1px solid #85144B;
+    border-top: none; }
+
+.input--wrapper label,
+.textarea--wrapper label {
   color: #001F3F;
   position: absolute;
   top: 0;
@@ -388,6 +429,12 @@ input[type="submit"].input--hidden,
   padding-top: 5px;
   transition: 0.2s;
   cursor: text; }
+
+.textarea--wrapper label {
+  padding-left: 1rem; }
+
+.file--wrapper input {
+  font-size: 1.4rem; }
 
 .navigation--wrapper {
   width: 100%;
@@ -441,9 +488,6 @@ input[type="submit"].input--hidden,
   display: none;
   z-index: 101;
   background: transparent; }
-
-input[type="submit"].update--submit {
-  margin: 3rem auto; }
 
 .user--logout {
   width: 90%;
@@ -753,11 +797,15 @@ body {
   height: 100vh;
   width: 200px;
   background: white; }
+  @media screen and (max-width: 700px) {
+    .meta--full {
+      display: none; } }
 
 .content--description--wrapper {
   position: absolute;
   left: 200px;
-  width: calc(100% - 200px); }
+  width: calc(100% - 200px);
+  min-width: 50rem; }
   .content--description--wrapper img {
     margin: 0 auto;
     display: block;

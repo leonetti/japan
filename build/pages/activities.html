@@ -14,7 +14,7 @@
     <script defer src="/__/firebase/5.0.4/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/5.0.4/firebase-auth.js"></script>
-    <script defer src="/__/firebase/5.0.4/firebase-database.js"></script>
+    <script defer src="/__/firebase/5.0.4/firebase-firestore.js"></script>
     <script defer src="/__/firebase/5.0.4/firebase-messaging.js"></script>
     <script defer src="/__/firebase/5.0.4/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
@@ -46,9 +46,9 @@
     <nav class="navigation--wrapper">
       <ul>
         <li><p href="#" data-user-name></p></li><!--
-         --><li><a href="#">Home</a></li><!--
+         --><li><a href="/pages/activities.html">Home</a></li><!--
          --><li><a href="#">My Activities</a></li><!--
-         --><li><a href="#">Add Activity</a></li><!--
+         --><li><a href="#" data-activity-modal>Add Activity</a></li><!--
          --><li><a href="#" data-user-email data-logout></a></li>
       </ul>
     </nav>
@@ -86,197 +86,40 @@
       <button data-logout-confirm class="user--logout">Logout</button>
     </div>
 
+    <div id="activity--modal" class="modal">
+      <div class="input--wrapper">
+        <input type="text" class="input--field" name="title" data-activity="title" required>
+        <label><i class="fas fa-circle"></i> Title</label>
+      </div>
+
+      <div class="input--wrapper">
+        <input type="text" class="input--field" name="sub_title" data-activity="subtitle" required>
+        <label><i class="far fa-circle"></i> Subtitle (Shopping Center)</label>
+      </div>
+
+      <div class="textarea--wrapper">
+        <textarea type="text" class="input--field" name="description" data-activity="description" required></textarea>
+        <label><i class="far fa-file-alt"></i> Description</label>
+      </div>
+
+      <div class="input--wrapper">
+        <input type="number" class="input--field" name="price" value="0" data-activity="price" required>
+        <label><i class="fas fa-dollar-sign"></i> Price</label>
+      </div>
+
+      <div class="file--wrapper">
+        <input type="file" class="input--field" name="file" data-activity="file" required>
+      </div>
+      <input type="submit" value="Submit" data-activity-submit class="update--submit">
+    </div>
+
 
     <div class="activities--wrapper">
       <section class="grid">
-        <div class="grid--item" href="#" data-ref="0">
-          <a href="#" data-add-item class="add--item"><i class="far fa-plus-square"></i></a>
-          <h2 class="title--preview">Shinkansen</h2>
-          <div class="loader"></div>
-          <span class="category">Bullet Train</span>
-        </div>
-        <div class="grid--item" href="#" data-ref="1">
-          <a href="#" data-add-item class="add--item"><i class="far fa-plus-square"></i></a>
-          <h2 class="title--preview">Shinkansen</h2>
-          <div class="loader"></div>
-          <span class="category">Bullet Train</span>
-        </div>
-        <div class="grid--item" href="#" data-ref="2">
-          <a href="#" data-add-item class="add--item"><i class="far fa-plus-square"></i></a>
-          <h2 class="title--preview">Shinkansen</h2>
-          <div class="loader"></div>
-          <span class="category">Bullet Train</span>
-        </div>
-        <div class="grid--item" href="#" data-ref="3">
-          <a href="#" data-add-item class="add--item"><i class="far fa-plus-square"></i></a>
-          <h2 class="title--preview">Shinkansen</h2>
-          <div class="loader"></div>
-          <span class="category">Bullet Train</span>
-        </div>
-        <div class="grid--item" href="#" data-ref="4">
-          <a href="#" data-add-item class="add--item"><i class="far fa-plus-square"></i></a>
-          <h2 class="title--preview">Shinkansen</h2>
-          <div class="loader"></div>
-          <span class="category">Bullet Train</span>
-        </div>
-        <div class="grid--item" href="#" data-ref="5">
-          <a href="#" data-add-item class="add--item"><i class="far fa-plus-square"></i></a>
-          <h2 class="title--preview">Shinkansen</h2>
-          <div class="loader"></div>
-          <span class="category">Bullet Train</span>
-        </div>
-        <div class="grid--item" href="#" data-ref="6">
-          <a href="#" data-add-item class="add--item"><i class="far fa-plus-square"></i></a>
-          <h2 class="title--preview">Shinkansen</h2>
-          <div class="loader"></div>
-          <span class="category">Bullet Train</span>
-        </div>
-        <div class="grid--item" href="#" data-ref="7">
-          <a href="#" data-add-item class="add--item"><i class="far fa-plus-square"></i></a>
-          <h2 class="title--preview">Shinkansen</h2>
-          <div class="loader"></div>
-          <span class="category">Bullet Train</span>
-        </div>
       </section>
     </div>
 
     <div class="activities--content--wrapper">
-      <div class="content--show">
-        <div class="meta--full">
-          <button>ADD</button>
-          <span class="meta--seperator"></span>
-          <span class="meta--user--hearts"><i class="fa fa-heart"></i> 2 friends</span>
-          <span class="meta--users">Alex Leonetti</span>
-          <span class="meta--users">Erika Clingerman</span>
-          <span class="meta--price">$125</span>
-        </div>
-        <div class="content--description--wrapper">
-          <button class="close--content"><i class="fas fa-times"></i></button>
-          <h5 class="content--sub--title">Bullet Train</h5>
-          <h3 class="content--main--title">Shinkansen</h3>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Japan_%28orthographic_projection%29.svg/440px-Japan_%28orthographic_projection%29.svg.png">
-          <p class="content--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consequuntur eum in non et aut harum accusamus modi accusantium quam, cupiditate explicabo veniam. Dolore minima, amet, voluptates numquam nostrum necessitatibus.</p>
-        </div>
-      </div>
-      <div class="content--show">
-        <div class="meta--full">
-          <button>ADD</button>
-          <span class="meta--seperator"></span>
-          <span class="meta--user--hearts"><i class="fa fa-heart"></i> 2 friends</span>
-          <span class="meta--users">Alex Leonetti</span>
-          <span class="meta--users">Erika Clingerman</span>
-          <span class="meta--price">$125</span>
-        </div>
-        <div class="content--description--wrapper">
-          <button class="close--content"><i class="fas fa-times"></i></button>
-          <h5 class="content--sub--title">Bullet Train</h5>
-          <h3 class="content--main--title">Shinkansen</h3>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Japan_%28orthographic_projection%29.svg/440px-Japan_%28orthographic_projection%29.svg.png">
-          <p class="content--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consequuntur eum in non et aut harum accusamus modi accusantium quam, cupiditate explicabo veniam. Dolore minima, amet, voluptates numquam nostrum necessitatibus.</p>
-        </div>
-      </div>
-      <div class="content--show">
-        <div class="meta--full">
-          <button>ADD</button>
-          <span class="meta--seperator"></span>
-          <span class="meta--user--hearts"><i class="fa fa-heart"></i> 2 friends</span>
-          <span class="meta--users">Alex Leonetti</span>
-          <span class="meta--users">Erika Clingerman</span>
-          <span class="meta--price">$125</span>
-        </div>
-        <div class="content--description--wrapper">
-          <button class="close--content"><i class="fas fa-times"></i></button>
-          <h5 class="content--sub--title">Bullet Train</h5>
-          <h3 class="content--main--title">Shinkansen</h3>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Japan_%28orthographic_projection%29.svg/440px-Japan_%28orthographic_projection%29.svg.png">
-          <p class="content--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consequuntur eum in non et aut harum accusamus modi accusantium quam, cupiditate explicabo veniam. Dolore minima, amet, voluptates numquam nostrum necessitatibus.</p>
-        </div>
-      </div>
-      <div class="content--show">
-        <div class="meta--full">
-          <button>ADD</button>
-          <span class="meta--seperator"></span>
-          <span class="meta--user--hearts"><i class="fa fa-heart"></i> 2 friends</span>
-          <span class="meta--users">Alex Leonetti</span>
-          <span class="meta--users">Erika Clingerman</span>
-          <span class="meta--price">$125</span>
-        </div>
-        <div class="content--description--wrapper">
-          <button class="close--content"><i class="fas fa-times"></i></button>
-          <h5 class="content--sub--title">Bullet Train</h5>
-          <h3 class="content--main--title">Shinkansen</h3>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Japan_%28orthographic_projection%29.svg/440px-Japan_%28orthographic_projection%29.svg.png">
-          <p class="content--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consequuntur eum in non et aut harum accusamus modi accusantium quam, cupiditate explicabo veniam. Dolore minima, amet, voluptates numquam nostrum necessitatibus.</p>
-        </div>
-      </div>
-      <div class="content--show">
-        <div class="meta--full">
-          <button>ADD</button>
-          <span class="meta--seperator"></span>
-          <span class="meta--user--hearts"><i class="fa fa-heart"></i> 2 friends</span>
-          <span class="meta--users">Alex Leonetti</span>
-          <span class="meta--users">Erika Clingerman</span>
-          <span class="meta--price">$125</span>
-        </div>
-        <div class="content--description--wrapper">
-          <button class="close--content"><i class="fas fa-times"></i></button>
-          <h5 class="content--sub--title">Bullet Train</h5>
-          <h3 class="content--main--title">Shinkansen</h3>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Japan_%28orthographic_projection%29.svg/440px-Japan_%28orthographic_projection%29.svg.png">
-          <p class="content--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consequuntur eum in non et aut harum accusamus modi accusantium quam, cupiditate explicabo veniam. Dolore minima, amet, voluptates numquam nostrum necessitatibus.</p>
-        </div>
-      </div>
-      <div class="content--show">
-        <div class="meta--full">
-          <button>ADD</button>
-          <span class="meta--seperator"></span>
-          <span class="meta--user--hearts"><i class="fa fa-heart"></i> 2 friends</span>
-          <span class="meta--users">Alex Leonetti</span>
-          <span class="meta--users">Erika Clingerman</span>
-          <span class="meta--price">$125</span>
-        </div>
-        <div class="content--description--wrapper">
-          <button class="close--content"><i class="fas fa-times"></i></button>
-          <h5 class="content--sub--title">Bullet Train</h5>
-          <h3 class="content--main--title">Shinkansen</h3>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Japan_%28orthographic_projection%29.svg/440px-Japan_%28orthographic_projection%29.svg.png">
-          <p class="content--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consequuntur eum in non et aut harum accusamus modi accusantium quam, cupiditate explicabo veniam. Dolore minima, amet, voluptates numquam nostrum necessitatibus.</p>
-        </div>
-      </div>
-      <div class="content--show">
-        <div class="meta--full">
-          <button>ADD</button>
-          <span class="meta--seperator"></span>
-          <span class="meta--user--hearts"><i class="fa fa-heart"></i> 2 friends</span>
-          <span class="meta--users">Alex Leonetti</span>
-          <span class="meta--users">Erika Clingerman</span>
-          <span class="meta--price">$125</span>
-        </div>
-        <div class="content--description--wrapper">
-          <button class="close--content"><i class="fas fa-times"></i></button>
-          <h5 class="content--sub--title">Bullet Train</h5>
-          <h3 class="content--main--title">Shinkansen</h3>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Japan_%28orthographic_projection%29.svg/440px-Japan_%28orthographic_projection%29.svg.png">
-          <p class="content--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consequuntur eum in non et aut harum accusamus modi accusantium quam, cupiditate explicabo veniam. Dolore minima, amet, voluptates numquam nostrum necessitatibus.</p>
-        </div>
-      </div>
-      <div class="content--show">
-        <div class="meta--full">
-          <button>ADD</button>
-          <span class="meta--seperator"></span>
-          <span class="meta--user--hearts"><i class="fa fa-heart"></i> 2 friends</span>
-          <span class="meta--users">Alex Leonetti</span>
-          <span class="meta--users">Erika Clingerman</span>
-          <span class="meta--price">$125</span>
-        </div>
-        <div class="content--description--wrapper">
-          <button class="close--content"><i class="fas fa-times"></i></button>
-          <h5 class="content--sub--title">Bullet Train</h5>
-          <h3 class="content--main--title">Shinkansen</h3>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Japan_%28orthographic_projection%29.svg/440px-Japan_%28orthographic_projection%29.svg.png">
-          <p class="content--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consequuntur eum in non et aut harum accusamus modi accusantium quam, cupiditate explicabo veniam. Dolore minima, amet, voluptates numquam nostrum necessitatibus.</p>
-        </div>
-      </div>
     </div>
 
 
@@ -292,3 +135,37 @@
     <script src="../assets/js/common/error.js"></script>
   </body>
 </html>
+
+<script type="text/template" data-template="activity_button">
+  <% _.each(activities, function(activity, index) { %>
+  <div class="grid--item" href="#" data-ref="<%= index %>">
+    <a href="#" data-add-item class="add--item"><i class="far fa-plus-square"></i></a>
+    <h2 class="title--preview"><%= activity.title %></h2>
+    <div class="loader"></div>
+    <span class="category"><%= activity.sub_title %></span>
+  </div>
+  <% }) %>
+</script>
+
+<script type="text/template" data-template="activity_description">
+  <% _.each(activities, function(activity) { %>
+  <div class="content--show">
+    <div class="meta--full">
+      <button data-add-item>ADD</button>
+      <span class="meta--seperator"></span>
+      <span class="meta--user--hearts"><i class="fa fa-heart"></i> <%= activity.users.length %> friends</span>
+      <% _.each(activity.users, function(user) { %>
+        <span class="meta--users"><%= user.displayName %></span>
+      <% }) %>
+      <span class="meta--price">$<%= activity.price %></span>
+    </div>
+    <div class="content--description--wrapper">
+      <button class="close--content"><i class="fas fa-times"></i></button>
+      <h5 class="content--sub--title"><%= activity.sub_title %></h5>
+      <h3 class="content--main--title"><%= activity.title %></h3>
+      <img src="<%= activity.image %>">
+      <p class="content--description"><%= activity.description %></p>
+    </div>
+  </div>
+  <% }) %>
+</script>

@@ -9,22 +9,31 @@ jQuery.noConflict();
 
     (function(Activities) {
 
+      var db = firebase.firestore();
+      var activitiesRef = db.collection('activities');
+      var storageRef = firebase.storage();
+
       Activities = function(options) {
         this.cfg = _.extend({
           selectors : {
             'activities_wrapper'     : '.activities--wrapper',
             'grid_wrapper'           : '.activities--wrapper .grid',
-            'grid_item'              : '.activities--wrapper .grid--item',
             'content_wrapper'        : '.activities--content--wrapper',
-            'content_item'           : '.activities--content--wrapper .content--show',
-            'content_close'          : '.activities--content--wrapper .close--content',
-            'add_item'               : '[data-add-item]',
+          },
+          templates : {
+            'activity_description'   : '[data-template="activity_description"]',
+            'activity_button'        : '[data-template="activity_button"]',
           },
         })
 
+        this.activities = [];
+
         this.getDOMRefs();
         this.bindHandlers();
+        this.buildTemplates();
         this.checkUserName();
+        this.getActivities();
+
       };
 
 
@@ -59,7 +68,7 @@ jQuery.noConflict();
           if ($el.length) {
             this.templates[name] = _.template($el.html());
           } else {
-            window.Japan.Error.handlerShowError({message: 'Activities: Template Can\'t be build.'});
+            window.Japan.Error.handlerShowError('Activities: Template Can\'t be build.');
           }
         }.bind(this));
       };
@@ -72,9 +81,9 @@ jQuery.noConflict();
         * @returns {Null}
       */
       Activities.prototype.bindHandlers = function() {
-        this.$dom.grid_item.on('click', this.handlerGridClick.bind(this));
-        this.$dom.content_close.on('click', this.handlerCloseContent.bind(this));
-        this.$dom.add_item.on('click', this.handlerAddUserActivity.bind(this));
+        this.$dom.activities_wrapper.on('click', '.grid--item', this.handlerGridClick.bind(this));
+        this.$dom.activities_wrapper.on('click', '[data-add-item]', this.handlerAddUserActivity.bind(this));
+        this.$dom.content_wrapper.on('click', '.close--content', this.handlerCloseContent.bind(this));
       };
 
 
@@ -157,10 +166,82 @@ jQuery.noConflict();
       }
 
 
+      /**
+        * If User registers with email we need to set display name
+        *
+        * @returns {Null}
+      */
+      Activities.prototype.getActivities = function() {
+        this.activities = [];
+        var promises = [];
+        var all_url = [];
+
+        activitiesRef.get()
+          .then(function(snapshot){
+            promises.push(snapshot.docs.map(function(doc) {
+              this.activities.push(doc.data());
+            }.bind(this)));
+
+            _.each(this.activities, function(val, key) {
+              var title = val.title;
+              if(storageRef.ref(title)) {
+                promises.push(storageRef.ref(title).getDownloadURL().then(function(url) {
+                  var item = {};
+                  item[title] = url;
+                  all_url.push(item)
+                }.bind(this)));
+              }
+            }.bind(this));
+
+
+            Promise.all(promises).then(function() {
+
+              _.each(all_url, function(url) {
+                var key = Object.keys(url)[0];
+                var index = _.findIndex(this.activities, {title: key});
+                var activity = this.activities.splice(index,1)[0];
+                console.log('activity: ', activity);
+                activity.image = url[key];
+                this.activities.push(activity);
+              }.bind(this));
+
+              this.activities = _.orderBy(this.activities, 'title');
+
+              this.$dom.grid_wrapper.html(this.templates.activity_button({
+                activities: this.activities
+              }));
+
+              this.$dom.content_wrapper.html(this.templates.activity_description({
+                activities: this.activities
+              }));
+
+              this.$dom.content_item = $('.activities--content--wrapper .content--show');
+            }.bind(this));
+
+
+
+          }.bind(this))
+          .catch(function(error) {
+            window.Japan.Error.handlerShowError('Error getting activities: ' + error);
+          }.bind(this));
+      }
+
+
+      /**
+        * Empty Activities List
+        *
+        * @returns {Null}
+      */
+      Activities.prototype.emptyActivities = function() {
+        this.$dom.grid_wrapper.empty();
+      }
+
+
 
 
       // Initializes Login
-      new Activities();
+      window.Japan.Activities = new Activities();
+
     })(window.Japan.Activities = window.Japan.Activities || {});
 
   })

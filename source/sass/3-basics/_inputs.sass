@@ -1,10 +1,18 @@
-.input--wrapper  /* Edit Bootstrap Form Group */
+.input--wrapper,
+.textarea--wrapper,
+.file--wrapper
   font-family: 'Raleway', sans-serif
   width: 100%
   height: auto
   margin: 4rem auto 0
   position: relative
+
+.input--wrapper,
+.file--wrapper
   max-width: 30rem
+
+.textarea--wrapper
+  max-width: 32rem
 
 input[type="submit"].input--hidden,
 .input--hidden
@@ -25,7 +33,9 @@ input[type="submit"].input--hidden,
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out
 
 
-.input--wrapper input
+.input--wrapper input,
+.textarea--wrapper textarea,
+.file--wrapper input
   height: 3.5rem
   width: 100%
   border: none
@@ -49,8 +59,27 @@ input[type="submit"].input--hidden,
       left: 0
       color: $maroon
 
+.file--wrapper input
+  border: none
+  line-height: 0
 
-.input--wrapper label
+  &:focus
+    border: none
+
+.textarea--wrapper textarea
+  margin: 0px -1px 0px 0px;
+  height: 92px;
+  border: 1px solid $navy;
+  border-top: none;
+  width: 100%;
+  padding: 3.75px 1.7rem;
+
+  &:focus
+    border: 1px solid $maroon
+    border-top: none
+
+.input--wrapper label,
+.textarea--wrapper label
   color: $navy
   position: absolute
   top: 0
@@ -58,3 +87,12 @@ input[type="submit"].input--hidden,
   padding-top: 5px
   transition: 0.2s
   cursor: text
+
+
+.textarea--wrapper label
+  padding-left: 1rem
+
+.file--wrapper input
+  font-size: 1.4rem
+
+

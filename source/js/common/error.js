@@ -89,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
       // Initializes Error
       window.Japan.Error = new Error();
+
     })(window.Japan.Error = window.Japan.Error || {});
   })(window.jQuery, window._);
 })

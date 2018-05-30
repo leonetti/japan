@@ -188,7 +188,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
 
       // Initializes Login
-      new Login();
+      window.Japan.Navigation = new Login();
+
     })(window.Japan.Login = window.Japan.Login || {});
   })(window.jQuery, window._);
 })
