@@ -12,7 +12,7 @@ body
 
 .grid--item
   height: 30rem
-  width: 35rem
+  min-width: 25rem
   display: flex
   justify-content: center
   align-items: center
@@ -23,6 +23,12 @@ body
   transition: all
   flex: 1 0 auto
   cursor: pointer
+
+  @media screen and (max-width: 400px)
+    flex: 0 1 auto
+    min-width: 0
+    margin: 0 auto
+    width: 100%
 
   &:before
     position: absolute
@@ -43,6 +49,13 @@ body
   .category
     color: $medgray
     font-family: "Playfair Display", serif
+
+  h2
+    padding: 0 30px;
+
+    @media screen and (max-width: 500px)
+      font-size: 24px
+      flex:
 
 .add--item
   position: absolute;
@@ -117,11 +130,20 @@ body
   width: calc(100% - 200px)
   min-width: 50rem
 
+  @media screen and (max-width: 700px)
+    left: 0
+    width: 100%
+    min-width: 0
+
   img
     margin: 0 auto
     display: block
-    max-height: 250px
+    max-height: 25rem
     margin-bottom: 4rem
+    padding-left: 4rem;
+    padding-right: 4rem;
+    max-width: 50rem
+    width: 100%;
 
 
 .close--content
