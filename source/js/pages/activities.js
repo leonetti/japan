@@ -17,7 +17,8 @@ jQuery.noConflict();
         this.cfg = _.extend({
           selectors : {
             'activities_wrapper'     : '.activities--wrapper',
-            'grid_wrapper'           : '.activities--wrapper .grid',
+            'grid_wrapper'           : '.activities--wrapper--grid',
+            'grid'                   : '.activities--wrapper--grid .grid',
             'content_wrapper'        : '.activities--content--wrapper',
           },
           templates : {
@@ -81,8 +82,9 @@ jQuery.noConflict();
         * @returns {Null}
       */
       Activities.prototype.bindHandlers = function() {
-        this.$dom.activities_wrapper.on('click', '.grid--item', this.handlerGridClick.bind(this));
-        this.$dom.activities_wrapper.on('click', '[data-add-item]', this.handlerAddUserActivity.bind(this));
+        this.$dom.grid.on('click', '.grid--item', this.handlerGridClick.bind(this));
+        this.$dom.grid.on('click', '[data-add-item]', this.handlerAddUserActivity.bind(this, 'grid'));
+        this.$dom.content_wrapper.on('click', '[data-add-item]', this.handlerAddUserActivity.bind(this, 'content'));
         this.$dom.content_wrapper.on('click', '.close--content', this.handlerCloseContent.bind(this));
       };
 
@@ -98,7 +100,7 @@ jQuery.noConflict();
         var $loader = $el.find('.loader').addClass('active');
         var ref = $el.data('ref');
         setTimeout(function() {
-          this.$dom.activities_wrapper.fadeOut('slow');
+          this.$dom.grid.fadeOut('slow');
         }.bind(this), 500);
         setTimeout(function() {
           $loader.removeClass('active');
@@ -115,7 +117,7 @@ jQuery.noConflict();
       */
       Activities.prototype.handlerCloseContent = function(e) {
         this.$dom.content_item.fadeOut('slow');
-        this.$dom.activities_wrapper.fadeIn('slow');
+        this.$dom.grid.fadeIn('slow');
       };
 
 
@@ -125,10 +127,37 @@ jQuery.noConflict();
         *
         * @returns {Null}
       */
-      Activities.prototype.handlerAddUserActivity = function(e) {
+      Activities.prototype.handlerAddUserActivity = function(type, e) {
         e.preventDefault();
         e.stopPropagation();
-        window.Japan.Error.handlerShowError('Coming Soon: Add Activities to Your Own List!', true);
+        var id = type === 'grid' ? $(e.target).closest('.grid--item').attr('data-activity-id') : $(e.target).closest('.content--show').attr('data-activity-id');
+        var currentUser = JSON.parse(localStorage.getItem('user'));
+        var index = _.findIndex(this.activities, {id: id});
+        var activity = this.activities[index];
+        var users = activity.users;
+        var userIndex = _.findIndex(users, currentUser);
+
+        console.log('user index: ', userIndex);
+
+        if(userIndex === -1) {
+          users.push({
+            email: currentUser.email,
+            name: currentUser.name,
+          })
+
+          console.log('users: ', users);
+
+          activitiesRef.doc(id).update({
+            users : users,
+          });
+          window.Japan.Error.handlerShowError('Added Activity: ' + activity.title + ' to your list!', true);
+          this.getActivities();
+          this.$dom.grid.fadeIn('slow');
+          this.$dom.content_item.fadeOut('slow');
+        } else {
+          window.Japan.Error.handlerShowError('Activity: ' + activity.title + ' already is in your list!', true);
+        }
+
       };
 
 
@@ -179,7 +208,7 @@ jQuery.noConflict();
         activitiesRef.get()
           .then(function(snapshot){
             promises.push(snapshot.docs.map(function(doc) {
-              this.activities.push(doc.data());
+              this.activities.push(_.extend(doc.data(), {id : doc.id}));
             }.bind(this)));
 
             _.each(this.activities, function(val, key) {
@@ -207,7 +236,7 @@ jQuery.noConflict();
 
               this.activities = _.orderBy(this.activities, 'title');
 
-              this.$dom.grid_wrapper.html(this.templates.activity_button({
+              this.$dom.grid.html(this.templates.activity_button({
                 activities: this.activities
               }));
 
@@ -233,7 +262,7 @@ jQuery.noConflict();
         * @returns {Null}
       */
       Activities.prototype.emptyActivities = function() {
-        this.$dom.grid_wrapper.empty();
+        this.$dom.grid.empty();
       }
 
 

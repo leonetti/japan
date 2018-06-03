@@ -49,6 +49,7 @@
          --><li><a href="/pages/activities.html">Home</a></li><!--
          --><li><a href="#">My Activities</a></li><!--
          --><li><a href="#" data-activity-modal>Add Activity</a></li><!--
+         --><li><a href="#" data-hamburger-menu class="hamgurger--menu"><i class="fas fa-bars"></i></a></li><!--
          --><li><a href="#" data-user-email data-logout></a></li>
       </ul>
     </nav>
@@ -113,13 +114,14 @@
       <input type="submit" value="Submit" data-activity-submit class="update--submit">
     </div>
 
-
     <div class="activities--wrapper">
-      <section class="grid">
-      </section>
-    </div>
+      <div class="activities--wrapper--grid">
+        <section class="grid">
+        </section>
+      </div>
 
-    <div class="activities--content--wrapper">
+      <div class="activities--content--wrapper">
+      </div>
     </div>
 
 
@@ -138,7 +140,7 @@
 
 <script type="text/template" data-template="activity_button">
   <% _.each(activities, function(activity, index) { %>
-  <div class="grid--item" href="#" data-ref="<%= index %>">
+  <div class="grid--item" href="#" data-activity-id="<%= activity.id %>" data-ref="<%= index %>">
     <a href="#" data-add-item class="add--item"><i class="far fa-plus-square"></i></a>
     <h2 class="title--preview"><%= activity.title %></h2>
     <div class="loader"></div>
@@ -149,13 +151,13 @@
 
 <script type="text/template" data-template="activity_description">
   <% _.each(activities, function(activity) { %>
-  <div class="content--show">
+  <div class="content--show" data-activity-id="<%= activity.id %>">
     <div class="meta--full">
       <button data-add-item>ADD</button>
       <span class="meta--seperator"></span>
-      <span class="meta--user--hearts"><i class="fa fa-heart"></i> <%= activity.users.length %> friends</span>
+      <span class="meta--user--hearts"><i class="fa fa-heart"></i> <%= activity.users.length %> users</span>
       <% _.each(activity.users, function(user) { %>
-        <span class="meta--users"><%= user.displayName %></span>
+        <span class="meta--users"><%= user.name %></span>
       <% }) %>
       <span class="meta--price">$<%= activity.price %></span>
     </div>

@@ -452,6 +452,16 @@ input[type="submit"].input--hidden,
     list-style: none; }
     .navigation--wrapper li:last-child {
       margin-left: auto; }
+    @media screen and (max-width: 700px) {
+      .navigation--wrapper li a {
+        display: none; } }
+  .navigation--wrapper .hamgurger--menu {
+    display: none;
+    position: absolute;
+    right: 0; }
+    @media screen and (max-width: 700px) {
+      .navigation--wrapper .hamgurger--menu {
+        display: block; } }
   .navigation--wrapper p {
     font-weight: 900; }
   .navigation--wrapper a,
